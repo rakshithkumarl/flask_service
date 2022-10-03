@@ -1,0 +1,2 @@
+A flask microservice which has the capability of extracting the text from an uploaded image and translating the text into required langauge.
+Tech stack: Flask, Flask-restful, pyterreract, Open-cv, GoogleTranslator.
