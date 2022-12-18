@@ -3,7 +3,7 @@ import pytesseract
 from flask_restful import Resource, reqparse
 import werkzeug
 import numpy as np
-
+import config
 
 class Extract(Resource):
     def __init__(self):
@@ -16,4 +16,4 @@ class Extract(Resource):
         file_bytes = np.fromfile(image_file, np.uint8)        
         img = cv.imdecode(file_bytes, cv.IMREAD_COLOR)
         text = pytesseract.image_to_string(img).replace("\n", " ")
-        return {"extracted_text": text}, 200
+        return {"extracted_text": text}, config.SUCCESS_CODE

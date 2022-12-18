@@ -4,6 +4,7 @@ from deep_translator import GoogleTranslator
 from flask_restful import Resource, reqparse
 import werkzeug
 import numpy as np
+import config 
 
 
 class Translate(Resource):
@@ -21,4 +22,4 @@ class Translate(Resource):
         img = cv.imdecode(file_bytes, cv.IMREAD_COLOR)
         text = pytesseract.image_to_string(img).replace("\n", " ")
         translated = GoogleTranslator(source='auto', target=trans_language).translate(text).replace("\n", " ")
-        return {"extracted_text":text, "translated_text": translated}, 200
+        return {"extracted_text":text, "translated_text": translated}, config.SUCCESS_CODE
